@@ -22,10 +22,21 @@ class Market
     end
   end
 
-  def total_inventory
-    total_inventory = Hash.new
-    @vendors.each do |vendor|
-      total_inventory = {item: item.name, quantity: item.amount}
+  def total_item_amount(item)
+    @vendors.sum do |vendor|
+      vendor.inventory[item]
     end
   end
+
+  def total_inventory
+    inventory = {}
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, stock|
+        inventory[item] = {quantity: total_item_amount(item), vendors: vendors_that_sell(item)}
+      end
+    end
+    inventory.keys.uniq
+  end
+
+
 end

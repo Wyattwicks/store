@@ -47,14 +47,14 @@ class VendorTest < Minitest::Test
     assert_equal answer_hash, @vendor1.inventory
   end
 
-
   def test_potential_revenue
     @vendor1.stock(@item1, 35)
     @vendor1.stock(@item2, 7)
     @vendor2.stock(@item4, 50)
     @vendor2.stock(@item3, 25)
     @vendor3.stock(@item1, 65)
-    # require "pry";binding.pry
     assert_equal 29.75, @vendor1.potential_revenue
   end
+
+
 end

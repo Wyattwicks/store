@@ -54,28 +54,19 @@ class MarketTest < Minitest::Test
   end
 
   def test_total_inventory
+    skip
     @market.add_vendor(@vendor1)
     @market.add_vendor(@vendor2)
     @market.add_vendor(@vendor3)
-    answer_hash = {
-        <Item:0x007f9c56740d48...> => {
-          quantity: 100,
-          vendors: [<Vendor:0x00007fe1348a1160...>, <Vendor:0x00007fe134910650...>]
-        },
-        <Item:0x007f9c565c0ce8...> => {
-          quantity: 7,
-          vendors: [<Vendor:0x00007fe1348a1160...>]
-        ,
-        <Item:0x007f9c56343038...> => {
-          quantity: 50,
-          vendors: [<Vendor:0x00007fe1349bed40...>]
-        },
-        <Item:0x007f9c562a5f18...> => {
-          quantity: 35,
-          vendors: [<Vendor:0x00007fe1349bed40...>, <Vendor:0x00007fe134910650...>]
-        },
-      }
-      assert_equal answer_hash, @market.total_inventory
+    answer = [<Item:0xXXXXXX @name="Peach", @price="$0.75", @price_int=0.75>, <Item:0xXXXXXX @name="Tomato", @price="$0.50", @price_int=0.5>, <Item:0xXXXXXX @name="Banana Nice Cream", @price="$4.25", @price_int=4.25>, <Item:0xXXXXXX @name="Peach-Raspberry Nice Cream", @price="$5.30", @price_int=5.3>]
+    assert_equal answer, @market.total_inventory
+    end
+
+    def test_total_item_amount
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+      assert_equal 100, @market.total_item_amount(@item1)
     end
 
 
