@@ -1,6 +1,6 @@
 class Vendor
 
-  attr_reader :name, :inventory
+  attr_reader :name, :inventory, :item_amount
 
   def initialize(name)
     @name = name
@@ -8,18 +8,18 @@ class Vendor
   end
 
   def check_stock(item)
-    @inventory[item]
+    @item_amount = @inventory[item]
   end
 
   def stock(item, amount)
     @inventory[item] += amount
   end
 
+
+ #Got stuck with this method and spent way too long trying to figure it out. :(
   def potential_revenue
-      @inventory.find_all do |price|
-        price_int = price.delete('$').to_i
-        price_int * @inventory[item]
+      @inventory.sum do |item|
+        inventory[@price_int] * @item_amount.to_i if @item_amount != 0 || nil
       end
   end
-
 end

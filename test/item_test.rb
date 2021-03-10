@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/item'
 require 'pry'
 
-
 class ItemTest < Minitest::Test
 
   def setup
@@ -19,6 +18,5 @@ class ItemTest < Minitest::Test
     assert_equal 'Tomato', @item2.name
     assert_equal '$0.50', @item2.price
   end
-
 
 end

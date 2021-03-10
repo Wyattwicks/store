@@ -54,6 +54,29 @@ class MarketTest < Minitest::Test
   end
 
   def test_total_inventory
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    answer_hash = {
+        <Item:0x007f9c56740d48...> => {
+          quantity: 100,
+          vendors: [<Vendor:0x00007fe1348a1160...>, <Vendor:0x00007fe134910650...>]
+        },
+        <Item:0x007f9c565c0ce8...> => {
+          quantity: 7,
+          vendors: [<Vendor:0x00007fe1348a1160...>]
+        ,
+        <Item:0x007f9c56343038...> => {
+          quantity: 50,
+          vendors: [<Vendor:0x00007fe1349bed40...>]
+        },
+        <Item:0x007f9c562a5f18...> => {
+          quantity: 35,
+          vendors: [<Vendor:0x00007fe1349bed40...>, <Vendor:0x00007fe134910650...>]
+        },
+      }
+      assert_equal answer_hash, @market.total_inventory
+    end
 
 
 end

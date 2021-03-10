@@ -47,6 +47,7 @@ class VendorTest < Minitest::Test
     assert_equal answer_hash, @vendor1.inventory
   end
 
+
   def test_potential_revenue
     @vendor1.stock(@item1, 35)
     @vendor1.stock(@item2, 7)

@@ -22,6 +22,10 @@ class Market
     end
   end
 
-
-
+  def total_inventory
+    total_inventory = Hash.new
+    @vendors.each do |vendor|
+      total_inventory = {item: item.name, quantity: item.amount}
+    end
+  end
 end
