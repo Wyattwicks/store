@@ -16,10 +16,10 @@ class Vendor
     @inventory[item] += amount
   end
 
- #Got stuck with this method and spent way too long trying to figure it out. :(
   def potential_revenue
       @inventory.sum do |item, stock|
         item.price_int * check_stock(item)
       end
   end
+
 end

@@ -69,5 +69,12 @@ class MarketTest < Minitest::Test
       assert_equal 100, @market.total_item_amount(@item1)
     end
 
+    def test_overstocked_items
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+      assert_equal @item1, @market.overstocked_items
+    end
+
 
 end
