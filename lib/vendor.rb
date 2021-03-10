@@ -15,4 +15,11 @@ class Vendor
     @inventory[item] += amount
   end
 
+  def potential_revenue
+      @inventory.find_all do |price|
+        price_int = price.delete('$').to_i
+        price_int * @inventory[item]
+      end
+  end
+
 end
